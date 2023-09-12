@@ -1,0 +1,100 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #010808;
+}
+
+.container{
+    position: relative;
+    width:100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #5f575760;
+}
+
+/* Base da nuvem */
+.container .cloud{
+    position: relative;
+    width: 320px;
+    height: 100px;
+    background-color: #3f506b;;
+    border-radius: 100px;    
+    /* O steps determina a velocidade da transicao */
+    animation: animateCloud 2s steps(1) infinite;
+}
+
+/* Segunda parte da nuvem(círculo) */
+.container .cloud::before{
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 110px;
+    border-radius: 50%;
+    background: #3f506b;;
+    top: -50px;
+    left: 40px;
+    box-shadow: 90px -10px 0 30px #3f506b;;
+}
+
+/* Terceira parte da nuvem(círculo) */
+.container .cloud::after{
+    content: '';
+    position: absolute;
+    border-radius: 100px;
+    background: #3f506b;
+    inset: 0;
+    z-index: 1000;
+}
+
+.container .cloud .drop{
+    position: absolute;
+    top:40px;
+    background: #0b4763;
+    width: 2px;
+    height: 10px;
+    transform-origin: bottom;
+    animation: animate 2s linear infinite;
+}
+
+/* Posição do iframe */
+.music{
+    padding: 10px;
+}
+
+/* Trovões */
+@keyframes animateCloud{
+    0% {
+        filter: drop-shadow(8px 8px 0 #0001) drop-shadow(0 0 0 #48515a4f) brightness(1);
+    }
+    95% {
+        filter: drop-shadow(8px 8px 0 #0001) drop-shadow(0 0 50px #474b4e63) brightness(3);
+    }
+}
+
+/* Chuva */
+@keyframes animate{
+    0%{
+        transform: translateY(0) scaleY(1);
+    }
+    70%{
+        transform: translateY(360px) scaleY(1);
+    }
+    80%{
+        transform: translateY(360px) scaleY(0.2);
+    }
+    100%{
+        transform: translateY(360px) scaleY(0) scaleX(15);
+    }
+}
+
+
+
